@@ -361,10 +361,10 @@ export default function OkiDemo() {
   }
 
   const lastId = turns.at(-1)?.id;
+  const scale = useFitScale();
 
   return (
-    <div className="ok-wrap">
-
+    <div className="ok-wrap" style={{ zoom: scale }}>
       <PhoneFrame>
         {stage === 'lock' ? (
           <div className="ok-lock">
@@ -438,3 +438,18 @@ const QUESTIONS: Record<'q1' | 'q2' | 'q3', { h: string; body?: string; o: [stri
     next: 'offer',
   },
 };
+
+/**
+ * Shrinks the phone to fit the window (laptops, projectors, small screens),
+ * never enlarges it. The frame is 422x894 px; #root adds 24px padding each side.
+ */
+function useFitScale() {
+  const calc = () => Math.min(1, (window.innerHeight - 48) / 894, (window.innerWidth - 48) / 422);
+  const [s, setS] = useState(calc);
+  useEffect(() => {
+    const on = () => setS(calc());
+    window.addEventListener('resize', on);
+    return () => window.removeEventListener('resize', on);
+  }, []);
+  return s;
+}
