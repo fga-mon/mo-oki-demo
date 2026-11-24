@@ -1,0 +1,895 @@
+/* Sizes below are measured off the reference mockup (804×1748 @2x → 402×874pt),
+   so 1 CSS px here == 1 pt in the design. */
+
+/* ---------------- Phone frame ---------------- */
+
+.phone {
+  /* 402×874 screen + 10px bezel on each side */
+  width: 422px;
+  height: 894px;
+  background: var(--bg);
+  border-radius: 56px;
+  border: 10px solid #11151c;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.statusbar {
+  height: 48px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 26px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 125px;
+  height: 36px;
+  background: #000;
+  border-radius: 20px;
+}
+
+.home-indicator {
+  height: 20px;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+.home-indicator::after {
+  content: '';
+  width: 140px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(22, 35, 59, 0.35);
+}
+
+/* ---------------- Header ---------------- */
+
+.header {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 16px 21px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header .grounding {
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+
+/* ---------------- Transcript ---------------- */
+
+.transcript {
+  flex: 1;
+  overflow-y: auto;
+  padding: 19px 21px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: none;
+}
+.transcript::-webkit-scrollbar {
+  display: none;
+}
+
+.turn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bubble-customer {
+  align-self: flex-end;
+  max-width: 84%;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: var(--radius-bubble);
+  font-size: 14px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.bubble-advisor {
+  align-self: flex-start;
+  max-width: 88%;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* ---------------- Intro screen ---------------- */
+
+/* Anchored to the bottom: the options sit in thumb reach, and the empty space
+   above reads as calm rather than unfinished. */
+.intro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 21px 18px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.intro::-webkit-scrollbar {
+  display: none;
+}
+
+.intro-greeting {
+  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
+.intro-question {
+  margin: 0 0 22px;
+  font-size: 21px;
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.intro-options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.intro-options li {
+  border-bottom: 1px solid var(--line);
+}
+
+.intro-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 2px;
+  background: none;
+  border: 0;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.intro-option .arrow {
+  color: var(--gold);
+  font-weight: 600;
+}
+.intro-option:active {
+  opacity: 0.55;
+}
+
+.intro-hint {
+  margin: 16px 0 0;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: var(--ink-mute);
+}
+
+/* ---------------- Cards ---------------- */
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  padding: 22px 18px 20px;
+}
+
+.card h2 {
+  margin: 0 0 13px;
+  font-size: 21px;
+  line-height: 1.16;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.card .lede {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* The gold marker under the number that matters. */
+.marker {
+  font-weight: 700;
+  background: linear-gradient(transparent 78%, var(--gold-marker) 78%, var(--gold-marker) 100%);
+  padding: 0 1px;
+}
+
+.terms {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.terms-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10.5px 15px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.terms-row:last-child {
+  border-bottom: 0;
+}
+.terms-row dt {
+  margin: 0;
+  color: var(--ink-soft);
+}
+.terms-row dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.terms-row.emphasis {
+  background: var(--gold-tint);
+  padding: 12px 15px 13px;
+}
+.terms-row.emphasis dt {
+  color: var(--gold-ink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.terms-row.emphasis dd {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ---------------- Question cards ---------------- */
+
+.question-headline {
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--ink);
+}
+.choice:active:not(:disabled) {
+  background: var(--gold-tint);
+  border-color: var(--gold-marker);
+}
+.choice:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.choice-label {
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.choice-detail {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+.choice-hint {
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: var(--ink-mute);
+}
+
+/* What the advisor assumed rather than asked. */
+.assumptions {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.assumptions li {
+  position: relative;
+  padding-left: 13px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-mute);
+}
+.assumptions li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+}
+
+/* ---------------- Adjust (edit every input at once) ---------------- */
+
+.adj-field {
+  margin-top: 14px;
+}
+
+.adj-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.adj-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
+.adj-hint {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+.adj-hint.warn {
+  color: var(--gold-ink);
+  font-weight: 600;
+}
+
+.adj-stepper {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.adj-stepper > button {
+  flex: none;
+  width: 38px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1;
+}
+.adj-stepper > button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.adj-stepper > button:active:not(:disabled) {
+  background: var(--gold-tint);
+}
+
+.adj-input {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+}
+.adj-input:focus-within {
+  border-color: var(--gold-marker);
+}
+.adj-input input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  outline: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.adj-unit {
+  flex: none;
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+
+.adj-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.adj-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: none;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.adj-pill.on {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.adj-pill:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.adj-pill-detail {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-mute);
+}
+.adj-pill.on .adj-pill-detail {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Live monthly cost, recomputed as the fields move. */
+.adj-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: var(--radius-control);
+  background: var(--gold-tint);
+}
+
+.adj-preview-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.adj-preview-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+.adj-preview-sub {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+
+.adj-preview-value {
+  flex: none;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ---------------- Ledger (profile view) ---------------- */
+
+.ledger {
+  margin-top: 18px;
+}
+.ledger:first-of-type {
+  margin-top: 6px;
+}
+
+.ledger-title {
+  margin: 0 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.ledger-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+.ledger-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  color: var(--ink-soft);
+}
+.ledger-sub {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+
+.ledger-value {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Collapsed group: the total is the answer, the lines are the evidence. */
+.ledger-group {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.ledger-grouphead {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.ledger-grouphead:active {
+  opacity: 0.6;
+}
+
+.ledger-caret {
+  flex: none;
+  width: 9px;
+  color: var(--gold);
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+.ledger-caret.open {
+  transform: rotate(90deg);
+}
+
+.ledger-groupname {
+  flex: 1;
+  font-weight: 600;
+}
+
+.ledger-groupbody {
+  padding: 0 0 8px 18px;
+}
+.ledger-groupbody .ledger-row {
+  border-bottom: 0;
+  padding: 4px 0;
+}
+
+.ledger-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0 2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.ledger-total.emphasis {
+  margin-top: 4px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: var(--gold-tint);
+  font-size: 15px;
+}
+.ledger-total.emphasis span:last-child {
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+/* ---------------- Impact (the two numbers) ---------------- */
+
+.impact {
+  margin-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 14px;
+}
+
+.impact-title {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.impact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 0 8px 11px;
+  border-left: 2px solid var(--green);
+}
+.impact-row + .impact-row {
+  margin-top: 4px;
+}
+.impact-row.warn {
+  border-left-color: var(--gold);
+}
+.impact-row.fail {
+  border-left-color: #c0503f;
+}
+
+/* Stacked rather than label-left/values-right: currency strings vary a lot in
+   length ("€486/mo" vs "4.027 kr./mo") and a two-column row wraps badly. */
+.impact-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.impact-label {
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+  color: var(--ink-soft);
+}
+
+.impact-values {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+.impact-before {
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-mute);
+}
+.impact-arrow {
+  font-size: 12px;
+  color: var(--gold);
+}
+.impact-after {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.impact-note {
+  font-size: 11.5px;
+  color: var(--ink-mute);
+}
+
+.binding {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 17px 0 10px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.binding::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: none;
+}
+.binding.provisional::before {
+  background: var(--gold);
+}
+
+/* Primary holds the mockup's 45% basis and the secondary takes the remainder,
+   which reproduces the reference split exactly for short labels. Both may
+   shrink, and labels wrap inside the button rather than pushing past the card —
+   the home cards carry much longer labels than the car card did. */
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.btn {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
+  /* 10px, not more: "Change the numbers" needs 141.4px and would otherwise
+     wrap inside a button the mockup shows on one line. */
+  padding: 11px 10px;
+  border-radius: var(--radius-control);
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid transparent;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  /* Width comes from the basis, matching the reference's 45/55 split — so no
+     extra inline padding, which only cost the label room. */
+  flex-basis: 45%;
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-secondary {
+  flex-grow: 1;
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+/* ---------------- Suggestions ---------------- */
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 3px 4px 4px;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 13.5px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.suggestion span.arrow {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ---------------- Product list + notice cards ---------------- */
+
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+  padding: 11px 0;
+}
+.product:first-of-type {
+  border-top: 0;
+}
+.product strong {
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.product span {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.step {
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: var(--line-soft);
+  color: var(--ink-mute);
+}
+.step.current {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ---------------- Composer ---------------- */
+
+.composer {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 21px;
+  border-top: 1px solid var(--line);
+}
+
+.composer input {
+  flex: 1;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  outline: none;
+  min-width: 0;
+}
+.composer input::placeholder {
+  color: var(--ink-mute);
+}
+
+.send {
+  flex: none;
+  background: var(--ink);
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius-control);
+  padding: 8.5px 14px;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.send:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* ---------------- Thinking ---------------- */
+
+.thinking {
+  display: flex;
+  gap: 5px;
+  padding: 5px 4px;
+}
+.thinking i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-mute);
+  animation: blink 1.2s infinite ease-in-out;
+}
+.thinking i:nth-child(2) {
+  animation-delay: 0.18s;
+}
+.thinking i:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes blink {
+  0%, 60%, 100% { opacity: 0.25; }
+  30% { opacity: 1; }
+}
